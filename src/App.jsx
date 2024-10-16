@@ -4,7 +4,7 @@ function Header() {
     
     <header className="flex justify-between items-center bg-white border-b  p-4 ">
       <div className="logo ">
-        <img src="./public/hh..svg" alt="Logo"/>
+        <img src="/hh..svg" alt="Logo"/>
       </div>
       <nav className="flex-grow">
        <ul className="nav-list flex justify-end space-x-4">
@@ -36,7 +36,7 @@ function HeroSection() {
       Inspiration and Information.
       </p>
       </div>
-      <img src="./public/person.svg" alt="man"  className="h-[530px] object-cover rounded-lg shadow-lg lg:w-1/3 mx-4 mb-8 lg:mb-0"/>
+      <img src="https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg" alt="man"  className="h-[530px] object-cover rounded-lg shadow-lg lg:w-1/3 mx-4 mb-8 lg:mb-0"/>
       <div className="lg:w-1/3 lg:pl-8">
       <h2 className="text-xl font-semibold mb-2">-Author</h2>
       <h3 className="text-2xl font-bold mb-4">Thompson P.</h3>
