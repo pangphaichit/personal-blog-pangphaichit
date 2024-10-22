@@ -110,6 +110,7 @@ export function Article() {
           title={blogPosts[0].title}
           description={blogPosts[0].description}
           author={blogPosts[0].author}
+          authorImage={blogPosts[0].authorImage}
           date={blogPosts[0].date}
         />
         <BlogCard
@@ -118,6 +119,7 @@ export function Article() {
           title={blogPosts[1].title}
           description={blogPosts[1].description}
           author={blogPosts[1].author}
+          authorImage={blogPosts[1].authorImage}
           date={blogPosts[1].date}
         />
         <BlogCard
@@ -126,6 +128,7 @@ export function Article() {
           title={blogPosts[2].title}
           description={blogPosts[2].description}
           author={blogPosts[2].author}
+          authorImage={blogPosts[2].authorImage}
           date={blogPosts[2].date}
         />
         <BlogCard
@@ -134,6 +137,7 @@ export function Article() {
           title={blogPosts[3].title}
           description={blogPosts[3].description}
           author={blogPosts[3].author}
+          authorImage={blogPosts[3].authorImage}
           date={blogPosts[3].date}
         />
         <BlogCard
@@ -142,6 +146,7 @@ export function Article() {
           title={blogPosts[4].title}
           description={blogPosts[4].description}
           author={blogPosts[4].author}
+          authorImage={blogPosts[4].authorImage}
           date={blogPosts[4].date}
         />
         <BlogCard
@@ -150,6 +155,7 @@ export function Article() {
           title={blogPosts[5].title}
           description={blogPosts[5].description}
           author={blogPosts[5].author}
+          authorImage={blogPosts[5].authorImage}
           date={blogPosts[5].date}
         />
       </article>
