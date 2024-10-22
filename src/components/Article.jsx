@@ -49,6 +49,7 @@ export function BlogCard({ image, category, title, description, author, date, au
   }
 
 export function Article() {
+  const categories = ["Highlight", "Cat", "Inspiration", "General"];
   return (
     <div className="w-full max-w-7xl mx-auto md:px-6 lg:px-8 mb-10">
       <h2 className="text-xl font-bold mb-4 px-4">Latest articles</h2>
@@ -69,38 +70,26 @@ export function Article() {
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="highlight">Highlight</SelectItem>
-              <SelectItem value="cat">Cat</SelectItem>
-              <SelectItem value="inspiration">Inspiration</SelectItem>
-              <SelectItem value="general">General</SelectItem>
+              {categories.map((cat) => {
+                return (
+                  <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                )
+              })}
             </SelectContent>
           </Select>
         </div>
         <div className="hidden md:flex space-x-2">
           <button
-            className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium bg-[#DAD6D1]
-            "
-          >
+            className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium bg-[#DAD6D1]">
             Highlight
           </button>
-          <button
-            className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium bg-[muted]
-            "
-          >
-            Cat
-          </button>
-          <button
-            className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium bg-[muted]
-            "
-          >
-            Inspiration
-          </button>
-          <button
-            className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium bg-[muted]
-            "
-          >
-            General
-          </button>
+          {categories.slice(1).map((cat) => {
+            return (
+              <button key={cat} className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium hover:bg-muted">
+              {cat}
+              </button>
+            );
+          })}
         </div>
       </div>
       <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
