@@ -13,10 +13,10 @@ export function Header() {
       
       <header className="flex items-center bg-white border-b justify-between h-16 px-6 ">
         <div className="logo lg:pl-20">
-          <img src="/hh..svg" alt="Logo"/>
+        <img src="/hh..svg" alt="Logo" className="h-8" />
         </div>
-        <nav>
-         <ul className="nav-list justify-end px-6 py-3 hidden sm:flex space-x-4">
+        <nav className="flex items-center lg:pr-20">
+         <ul className="nav-list justify-end hidden sm:flex space-x-4">
             <li className="hidden sm:flex space-x-4">
             <a href="/login" className="px-9 py-3 rounded-full border border-slate-300 bg-white text-black hover:bg-gray-400 hover:text-white transition-colors">Log in</a>
             </li>
