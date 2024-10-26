@@ -53,7 +53,7 @@ export function Article() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
   const [category, setCategory] = useState("Highlight");
   return (
-    <div className="container max-w-7xl px-4 lg:px-0 mx-auto mb-10">
+    <div className="w-full mx-auto md:px-6 lg:px-20 mb-40 px-4 ">
       <h2 className="text-xl font-bold mb-4 px-4">Latest articles</h2>
       <div className="bg-[#EFEEEB] px-4 py-4 md:py-3 md:rounded-sm flex flex-col space-y-4 md:flex-row-reverse md:items-center md:space-y-0 md:justify-between">
         
@@ -68,7 +68,10 @@ export function Article() {
           </div>
         </div>
         <div className="md:hidden w-full">
-          <Select value="highlight">
+        <Select
+            value={category}
+            onValueChange={(value) => setCategory(value)}
+          >
             <SelectTrigger className="w-full py-3 rounded-sm text-muted-foreground">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
@@ -82,19 +85,14 @@ export function Article() {
           </Select>
         </div>
         <div className="hidden md:flex space-x-2">
-        {categories.map((cat) => (
-        <button
-        key={cat} onClick={() => {
-        if (category !== cat) {
-        setCategory(cat);
-      }}}
-         className={`px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium ${
-      category === cat ? "bg-[#DAD6D1]" : "hover:bg-muted"
-    }`}
-  >
-    {cat}
-  </button>
-))}
+        {categories.map((cat) => (<button key={cat} onClick={() => setCategory(cat)}
+              className={`px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium ${
+                category === cat ? "bg-[#DAD6D1]" : "hover:bg-muted"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
       <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px- md:px-0">

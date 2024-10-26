@@ -1,14 +1,14 @@
 export function HeroSection() {
     return (
-      <main className="container px-4 lg:px-8 py-8 lg:py-16 mx-auto">
+      <main className="container px-4 lg:px-4 py-8 lg:py-16 mx-auto">
         <div className="flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/3 mb-8 lg:mb-0 lg:pr-8">
-        <h1 className=" text-4xl lg:text-5xl font-bold mb-4 ml-20">
+        <h1 className=" text-4xl lg:text-5xl font-bold mb-4 pl-4 lg:pl-20">
           Stay <br className="hidden lg:block" />
           Informed, <br />
           Stay Inspired,
         </h1>
-        <p className="text-lg text-gray-500 ml-20">
+        <p className="text-lg text-gray-500 pl-4 lg:pl-20">
         Discover a World of Knowledge at Your Fingertips. Your Daily Dose of
         Inspiration and Information.
         </p>
