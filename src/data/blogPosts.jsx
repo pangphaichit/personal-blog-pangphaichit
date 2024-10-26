@@ -7,8 +7,8 @@ export const blogPosts = [
       title: "The Art of Mindfulness: Finding Peace in a Busy World",
       description:
         "Discover the transformative power of mindfulness and how it can help you navigate the challenges of modern life with greater ease and contentment.",
-      author: "Thompson P.",
-      authorImage: "https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg",
+      author: "Sofia Blake.",
+      authorImage: "/womanwithcat.jpg",
       date: "11 September 2024",
       likes: 321,
       content:
@@ -22,8 +22,8 @@ export const blogPosts = [
       title: "The Secret Language of Cats: Decoding Feline Communication",
       description:
         "Unravel the mysteries of cat communication and learn how to better understand your feline friend's needs and desires.",
-      author: "Thompson P.",
-      authorImage: "https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg",
+      author: "Sofia Blake.",
+      authorImage: "/womanwithcat.jpg",
       date: "21 August 2024",
       likes: 123,
       content:
@@ -37,8 +37,8 @@ export const blogPosts = [
       title: "Embracing Change: How to Thrive in Times of Transition",
       description:
         "Learn powerful strategies to navigate life's changes with grace and emerge stronger on the other side.",
-      author: "Thompson P.",
-      authorImage: "https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg",
+      author: "Sofia Blake.",
+      authorImage: "/womanwithcat.jpg",
       date: "23 March 2024",
       likes: 21,
       content:
@@ -52,8 +52,8 @@ export const blogPosts = [
       title: "The Future of Work: Adapting to a Digital-First Economy",
       description:
         "Explore how technology is reshaping the workplace and learn skills to succeed in the evolving job market.",
-      author: "Thompson P.",
-      authorImage: "https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg",
+      author: "Sofia Blake.",
+      authorImage: "/womanwithcat.jpg",
       date: "23 May 2024",
       likes: 32,
       content:
@@ -67,8 +67,8 @@ export const blogPosts = [
       title: "The Power of Habits: Small Changes, Big Results",
       description:
         "Discover how small, consistent habits can lead to significant personal and professional growth over time.",
-      author: "Thompson P.",
-      authorImage: "https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg",
+      author: "Sofia Blake.",
+      authorImage: "/womanwithcat.jpg",
       date: "23 June 2024",
       likes: 515,
       content:
@@ -82,8 +82,8 @@ export const blogPosts = [
       title: "Cat Nutrition: A Guide to Feeding Your Feline Friend",
       description:
         "Learn about the nutritional needs of cats and how to provide a balanced diet for optimal health and longevity.",
-      author: "Thompson P.",
-      authorImage: "https://res.cloudinary.com/dcbpjtd1r/image/upload/v1728449784/my-blog-post/xgfy0xnvyemkklcqodkg.jpg",
+      author: "Sofia Blake.",
+      authorImage: "/womanwithcat.jpg",
       date: "21 July 2024",
       likes: 555,
       content:

@@ -1,19 +1,20 @@
 export function Header() {
     return (
       
-      <header className="flex justify-between items-center bg-white border-b  p-4 ">
-        <div className="logo ">
+      <header className="flex items-center bg-white border-b  p-4 justify-between ">
+        <div className="logo pl-20 ">
           <img src="/hh..svg" alt="Logo"/>
         </div>
-        <nav className="flex-grow">
-         <ul className="nav-list flex justify-end space-x-4">
-            <li>
-            <a href="/login" className="px-4 py-2 rounded-full border hover:bg-gray-700 transition-colors hover:text-white">Log in</a>
+        <nav>
+         <ul className="nav-list flex justify-end space-x-4 pr-20">
+            <li className="hidden md:flex space-x-4">
+            <a href="/login" className="px-9 py-3 rounded-full border border-slate-300 bg-white text-black hover:bg-gray-400 hover:text-white transition-colors">Log in</a>
             </li>
-            <li>
-            <a href="/login" className="px-8 py-2  rounded-full border hover:bg-gray-700 transition-colors hover:text-white"> Sign up</a>
+            <li className="hidden md:flex space-x-4">
+            <a href="/login" className="px-8 py-3  rounded-full border border-slate-300 bg-white text-black hover:bg-gray-400 hover:text-white transition-colors"> Sign up</a>
             </li>
           </ul>
+          <button className="md:hidden">Menu</button>
         </nav>
       </header>
     );

@@ -8,8 +8,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { blogPosts } from "@/data/blogPosts"
+import { useState } from "react";
 
-export function BlogCard({ image, category, title, description, author, date, authorImage  }) {
+export function BlogCard({ image, category, title, description, author, date, authorImage}) {
     return (
       <div className="flex flex-col gap-4">
         <a href="#" className="relative h-[212px] sm:h-[360px]">
@@ -35,7 +36,7 @@ export function BlogCard({ image, category, title, description, author, date, au
           </p>
           <div className="flex items-center text-sm">
             <img
-              className="w-8 h-8 rounded-full mr-2"
+              className="w-8 h-8 rounded-full mr-2 object-cover"
               src={authorImage}
               alt={author}
             />
@@ -50,10 +51,12 @@ export function BlogCard({ image, category, title, description, author, date, au
 
 export function Article() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
+  const [category, setCategory] = useState("Highlight");
   return (
-    <div className="w-full max-w-7xl mx-auto md:px-6 lg:px-8 mb-10">
+    <div className="container max-w-7xl px-4 lg:px-0 mx-auto mb-10">
       <h2 className="text-xl font-bold mb-4 px-4">Latest articles</h2>
       <div className="bg-[#EFEEEB] px-4 py-4 md:py-3 md:rounded-sm flex flex-col space-y-4 md:flex-row-reverse md:items-center md:space-y-0 md:justify-between">
+        
         <div className="w-full md:max-w-sm">
           <div className="relative">
             <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -79,20 +82,22 @@ export function Article() {
           </Select>
         </div>
         <div className="hidden md:flex space-x-2">
-          <button
-            className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium bg-[#DAD6D1]">
-            Highlight
-          </button>
-          {categories.slice(1).map((cat) => {
-            return (
-              <button key={cat} className="px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium hover:bg-muted">
-              {cat}
-              </button>
-            );
-          })}
+        {categories.map((cat) => (
+        <button
+        key={cat} onClick={() => {
+        if (category !== cat) {
+        setCategory(cat);
+      }}}
+         className={`px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium ${
+      category === cat ? "bg-[#DAD6D1]" : "hover:bg-muted"
+    }`}
+  >
+    {cat}
+  </button>
+))}
         </div>
       </div>
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
+      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px- md:px-0">
         {blogPosts.map((post, index) => {
           return (
             <BlogCard
@@ -105,7 +110,6 @@ export function Article() {
             author={post.author}
             authorImage={post.authorImage}
             date={post.date}
-            likes={post.likes}
             />
           )
         })}
