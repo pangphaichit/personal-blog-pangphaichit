@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
@@ -7,12 +8,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { blogPosts } from "@/data/blogPosts"
-import { useState } from "react";
+import {  useEffect, useState } from "react";
 
 export function BlogCard({ image, category, title, description, author, date, authorImage}) {
+  const fallbackAuthorImage = "/womanwithcat.jpg"; 
     return (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mt-8">
         <a href="#" className="relative h-[212px] sm:h-[360px]">
           <img
             className="w-full h-full object-cover rounded-md"
@@ -37,7 +38,7 @@ export function BlogCard({ image, category, title, description, author, date, au
           <div className="flex items-center text-sm">
             <img
               className="w-8 h-8 rounded-full mr-2 object-cover"
-              src={authorImage}
+              src={authorImage || fallbackAuthorImage}
               alt={author}
             />
             <span>{author}</span>
@@ -52,6 +53,32 @@ export function BlogCard({ image, category, title, description, author, date, au
 export function Article() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
   const [category, setCategory] = useState("Highlight");
+  const [posts, setPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]); 
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(
+          `https://blog-post-project-api.vercel.app/posts`
+        );
+        setAllPosts(response.data.posts); 
+        setPosts(response.data.posts); 
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPosts();
+  }, []);
+
+  useEffect(() => {
+    const filteredPosts =
+      category === "Highlight"
+        ? allPosts 
+        : allPosts.filter((post) => post.category === category); 
+    setPosts(filteredPosts);
+  }, [category, allPosts]);
+
   return (
     <div className="w-full mx-auto md:px-6 lg:px-20 mb-40 px-4 ">
       <h2 className="text-xl font-bold mb-4 px-4">Latest articles</h2>
@@ -96,9 +123,8 @@ export function Article() {
         </div>
       </div>
       <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px- md:px-0">
-        {blogPosts.map((post, index) => {
-          return (
-            <BlogCard
+      {posts.map((post, index) => (
+          <BlogCard
             key={index}
             id={post.id}
             image={post.image}
@@ -107,10 +133,13 @@ export function Article() {
             description={post.description}
             author={post.author}
             authorImage={post.authorImage}
-            date={post.date}
-            />
-          )
-        })}
+            date={new Date(post.date).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          />
+        ))}
       </article>
     </div>
   );
