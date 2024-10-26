@@ -11,9 +11,9 @@ import {
 export function Header() {
     return (
       
-      <header className="flex items-center bg-white border-b justify-between h-16 px-6 ">
+      <header className="flex items-center bg-white border-b justify-between h-16 px-6">
         <div className="logo lg:pl-20">
-        <img src="/hh..svg" alt="Logo" className="h-8" />
+        <img src="/hh..svg" alt="Logo" className="h-6" />
         </div>
         <nav className="flex items-center lg:pr-20">
          <ul className="nav-list justify-end hidden sm:flex space-x-4">
