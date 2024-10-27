@@ -41,7 +41,7 @@ export function BlogCard({ image, category, title, description, author, date, au
               src={authorImage || fallbackAuthorImage}
               alt={author}
             />
-            <span className="font-semibold text-base text-gray-700">{author}</span>
+            <span className="font-semibold text-sm text-gray-700">{author}</span>
             <span className="mx-2 text-gray-300">|</span>
             <span>{date}</span>
           </div>
@@ -131,7 +131,7 @@ export function Article() {
             category={post.category}
             title={post.title}
             description={post.description}
-            author="Sofia Blake."
+            author="Sofia Blake"
             authorImage={post.authorImage}
             date={new Date(post.date).toLocaleDateString("en-GB", {
               day: "numeric",

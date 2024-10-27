@@ -12,7 +12,7 @@ export function Header() {
         <div className="logo lg:pl-20">
         <img src="/hh..svg" alt="Logo" className="h-6" />
         </div>
-        <nav className="flex items-center lg:pr-20 py-4 px-8">
+        <nav className="flex items-center lg:pr-20 py-4">
          <ul className="nav-list justify-end hidden sm:flex space-x-4 ">
             <li className="hidden sm:flex space-x-4">
             <a href="/login" className="px-9 py-2 rounded-full border border-slate-300 bg-white text-black hover:bg-gray-400 hover:text-white transition-colors">Log in</a>
