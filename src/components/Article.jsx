@@ -41,7 +41,7 @@ export function BlogCard({ image, category, title, description, author, date, au
               src={authorImage || fallbackAuthorImage}
               alt={author}
             />
-            <span>{author}</span>
+            <span className="font-semibold text-base text-gray-700">{author}</span>
             <span className="mx-2 text-gray-300">|</span>
             <span>{date}</span>
           </div>
@@ -80,7 +80,7 @@ export function Article() {
   }, [category, allPosts]);
 
   return (
-    <div className="w-full mx-auto md:px-6 lg:px-20 mb-40 px-4 ">
+    <div className="w-full mx-auto md:px-6 lg:px-20 mb-20 px-4 ">
       <h2 className="text-xl font-bold mb-4 px-4">Latest articles</h2>
       <div className="bg-[#EFEEEB] px-4 py-4 md:py-3 md:rounded-sm flex flex-col space-y-4 md:flex-row-reverse md:items-center md:space-y-0 md:justify-between">
         
@@ -122,7 +122,7 @@ export function Article() {
           ))}
         </div>
       </div>
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px- md:px-0">
+      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-0 gap-y-2">
       {posts.map((post, index) => (
           <BlogCard
             key={index}
@@ -131,7 +131,7 @@ export function Article() {
             category={post.category}
             title={post.title}
             description={post.description}
-            author={post.author}
+            author="Sofia Blake."
             authorImage={post.authorImage}
             date={new Date(post.date).toLocaleDateString("en-GB", {
               day: "numeric",
