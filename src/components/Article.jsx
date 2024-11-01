@@ -54,30 +54,37 @@ export function Article() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
   const [category, setCategory] = useState("Highlight");
   const [posts, setPosts] = useState([]);
-  const [allPosts, setAllPosts] = useState([]); 
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const limit = 6;
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          `https://blog-post-project-api.vercel.app/posts`
+          `https://blog-post-project-api.vercel.app/posts?page=${page}&limit=6${
+            category !== "Highlight" ? `&category=${category}` : ""
+          }`
         );
-        setAllPosts(response.data.posts); 
-        setPosts(response.data.posts); 
+  
+        if (page === 1) {
+          setPosts(response.data.posts);
+        } else {
+          setPosts((prevPosts) => [...prevPosts, ...response.data.posts]);
+        }
+
+        setHasMore(response.data.posts.length === limit); 
       } catch (error) {
         console.log(error);
       }
     };
-    fetchPosts();
-  }, []);
 
-  useEffect(() => {
-    const filteredPosts =
-      category === "Highlight"
-        ? allPosts 
-        : allPosts.filter((post) => post.category === category); 
-    setPosts(filteredPosts);
-  }, [category, allPosts]);
+    fetchPosts();
+  }, [page, category]);
+  
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   return (
     <div className="w-full mx-auto md:px-6 lg:px-20 mb-20 px-4 ">
@@ -111,8 +118,15 @@ export function Article() {
             </SelectContent>
           </Select>
         </div>
+
         <div className="hidden md:flex space-x-2">
-        {categories.map((cat) => (<button key={cat} onClick={() => setCategory(cat)}
+        {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => {
+                setCategory(cat);
+                setPage(1); 
+              }}
               className={`px-4 py-3 transition-colors rounded-sm text-sm text-muted-foreground font-medium ${
                 category === cat ? "bg-[#DAD6D1]" : "hover:bg-muted"
               }`}
@@ -141,6 +155,15 @@ export function Article() {
           />
         ))}
       </article>
+
+      <div className="text-center mt-16">
+      {hasMore && posts.length > 0 && (
+        <button onClick={handleLoadMore} className="font-medium mt-4 px-10 py-3 border rounded-lg border-slate-300 bg-white text-slate-800 hover:bg-gray-300 hover:text-white transition-colors">
+          View More
+        </button>
+      )}
+    </div>
+      
     </div>
   );
 }

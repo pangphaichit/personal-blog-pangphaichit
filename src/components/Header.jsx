@@ -18,7 +18,7 @@ export function Header() {
             <a href="/login" className="px-9 py-2 rounded-full border border-slate-300 bg-white text-black hover:bg-gray-400 hover:text-white transition-colors">Log in</a>
             </li>
             <li className="hidden md:flex space-x-4">
-            <a href="/login" className="px-8 py-2  rounded-full border border-slate-300 bg-white text-black hover:bg-gray-400 hover:text-white transition-colors"> Sign up</a>
+            <a href="/Signup" className="px-8 py-2  rounded-full border border-slate-300 bg-white text-black hover:bg-gray-400 hover:text-white transition-colors"> Sign up</a>
             </li>
           </ul>
           <DropdownMenu className="flex">
