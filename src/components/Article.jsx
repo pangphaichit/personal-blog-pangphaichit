@@ -56,10 +56,12 @@ export function Article() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
   const limit = 6;
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           `https://blog-post-project-api.vercel.app/posts?page=${page}&limit=6${
@@ -76,7 +78,9 @@ export function Article() {
         setHasMore(response.data.posts.length === limit); 
       } catch (error) {
         console.log(error);
-      }
+      }finally {
+          setLoading(false);
+        }
     };
 
     fetchPosts();
@@ -104,7 +108,10 @@ export function Article() {
         <div className="md:hidden w-full">
         <Select
             value={category}
-            onValueChange={(value) => setCategory(value)}
+            onValueChange={(value) => {
+              setCategory(value);
+              setPage(1); // Reset to first page on category change
+            }}
           >
             <SelectTrigger className="w-full py-3 rounded-sm text-muted-foreground">
               <SelectValue placeholder="Select category" />
@@ -136,8 +143,14 @@ export function Article() {
           ))}
         </div>
       </div>
+
       <article className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-0 gap-y-2">
-      {posts.map((post, index) => (
+      {loading && page === 1 ? (
+        <div className="col-span-full flex justify-center items-center h-40 w-full">
+          <p>Loading...</p> 
+        </div>
+        ) : (
+      posts.map((post, index) => (
           <BlogCard
             key={index}
             id={post.id}
@@ -153,12 +166,14 @@ export function Article() {
               year: "numeric",
             })}
           />
-        ))}
+        ))
+      )}
       </article>
 
       <div className="text-center mt-16">
-      {hasMore && posts.length > 0 && (
-        <button onClick={handleLoadMore} className="font-medium mt-4 px-10 py-3 border rounded-lg border-slate-300 bg-white text-slate-800 hover:bg-gray-300 hover:text-white transition-colors">
+      {loading && page > 1 && <p>Loading more posts...</p>}
+      {!loading && hasMore && posts.length > 0 && (
+        <button onClick={handleLoadMore} className="font-medium mt-4 px-10 py-3 border rounded-lg border-slate-300 bg-white text-slate-800 hover:bg-gray-400 hover:text-white transition-colors">
           View More
         </button>
       )}
