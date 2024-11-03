@@ -8,13 +8,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Loader2 } from "lucide-react";
 import {  useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import SofiaImage from "../assets/author-image.jpg";
 
-export function BlogCard({ image, category, title, description, author, date, authorImage}) {
-  const fallbackAuthorImage = "/womanwithcat.jpg"; 
+export function BlogCard({ id, image, category, title, description, author, date, authorImage}) {
+  const navigate = useNavigate();
+  const fallbackAuthorImage = SofiaImage; 
     return (
       <div className="flex flex-col gap-4 mt-8">
-        <a href="#" className="relative h-[212px] sm:h-[360px]">
+        <a href="#" onClick={() => navigate(`/post/${id}`)} className="relative h-[212px] sm:h-[360px]">
           <img
             className="w-full h-full object-cover rounded-md"
             src={image}
@@ -27,7 +31,7 @@ export function BlogCard({ image, category, title, description, author, date, au
               {category}
             </span>
           </div>
-          <a href="#">
+          <a href="#" onClick={() => navigate(`/post/${id}`)}>
             <h2 className="font-bold text-xl mb-2 line-clamp-2 hover:underline">
               {title}
             </h2>
@@ -58,6 +62,10 @@ export function Article() {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const limit = 6;
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -90,6 +98,27 @@ export function Article() {
     setPage((prevPage) => prevPage + 1);
   };
 
+  useEffect(() => {
+    if (searchKeyword.length > 0) {
+      setLoading(true);
+      const fetchSuggestions = async () => {
+        try {
+          const response = await axios.get(
+            `https://blog-post-project-api.vercel.app/posts?keyword=${searchKeyword}`
+          );
+          setSuggestions(response.data.posts); 
+          setLoading(false);
+        } catch (error) {
+          console.log(error);
+          setLoading(false);
+        }
+      };
+      fetchSuggestions();
+    } else {
+      setSuggestions([]); 
+    }
+  }, [searchKeyword]);
+
   return (
     <div className="w-full mx-auto md:px-6 lg:px-20 mb-20 px-4 ">
       <h2 className="text-xl font-bold mb-4 px-4">Latest articles</h2>
@@ -102,7 +131,30 @@ export function Article() {
               type="text"
               placeholder="Search"
               className="py-3 rounded-sm placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-muted-foreground"
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              onFocus={() => setShowDropdown(true)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setShowDropdown(false);
+                }, 200);
+              }}
             />
+            {!loading &&
+              showDropdown &&
+              searchKeyword &&
+              suggestions.length > 0 && (
+                <div className="absolute z-10 w-full mt-2 bg-background rounded-sm shadow-lg p-1">
+                  {suggestions.map((suggestion, index) => (
+                    <button
+                      key={index}
+                      className="text-start px-4 py-2 block w-full text-sm text-foreground hover:bg-[#EFEEEB] hover:text-muted-foreground hover:rounded-sm cursor-pointer"
+                      onClick={() => navigate(`/post/${suggestion.id}`)}
+                    >
+                      {suggestion.title}
+                    </button>
+                  ))}
+                </div>
+              )}
           </div>
         </div>
         <div className="md:hidden w-full">
@@ -110,7 +162,7 @@ export function Article() {
             value={category}
             onValueChange={(value) => {
               setCategory(value);
-              setPage(1); // Reset to first page on category change
+              setPage(1); 
             }}
           >
             <SelectTrigger className="w-full py-3 rounded-sm text-muted-foreground">
@@ -146,7 +198,8 @@ export function Article() {
 
       <article className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-0 gap-y-2">
       {loading && page === 1 ? (
-        <div className="col-span-full flex justify-center items-center h-40 w-full">
+        <div className="col-span-full flex flex-col justify-center items-center h-40 w-full">
+           <Loader2 className="w-12 h-12 animate-spin text-foreground" />
           <p>Loading...</p> 
         </div>
         ) : (
@@ -170,13 +223,23 @@ export function Article() {
       )}
       </article>
 
-      <div className="text-center mt-16">
-      {loading && page > 1 && <p>Loading more posts...</p>}
-      {!loading && hasMore && posts.length > 0 && (
-        <button onClick={handleLoadMore} className="font-medium mt-4 px-10 py-3 border rounded-lg border-slate-300 bg-white text-slate-800 hover:bg-gray-400 hover:text-white transition-colors">
-          View More
-        </button>
-      )}
+      <div className="text-center mt-16">  
+      {loading && page > 1 && (
+    <>
+      <div className="col-span-full flex flex-col justify-center items-center h-40 w-full">
+      <Loader2 className="w-12 h-12 animate-spin text-foreground mb-2" />
+      <p>Loading more posts...</p>
+      </div>
+    </>
+  )}
+  {!loading && hasMore && posts.length > 0 && (
+    <button
+      onClick={handleLoadMore}
+      className="font-medium mt-4 px-10 py-3 border rounded-lg border-slate-300 bg-white text-slate-800 hover:bg-gray-400 hover:text-white transition-colors"
+    >
+      View More
+    </button>
+  )}
     </div>
       
     </div>
