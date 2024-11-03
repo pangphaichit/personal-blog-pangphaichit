@@ -1,17 +1,20 @@
 import { Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdownmenu";
+import SofiaLogo from "../assets/logo.png";
 
 export function Header() {
+    const navigate = useNavigate();
     return (
       
       <header className="flex items-center bg-white border-b justify-between h-16 px-6">
-        <div className="logo lg:pl-20">
-        <img src="/hh..svg" alt="Logo" className="h-6" />
-        </div>
+        <a href="#" onClick={() => navigate("/")} className="logo lg:pl-20">
+        <img src={SofiaLogo} alt="Logo" className="h-12" />
+        </a>
         <nav className="flex items-center lg:pr-20 py-4">
          <ul className="nav-list justify-end hidden sm:flex space-x-4 ">
             <li className="hidden sm:flex space-x-4">
