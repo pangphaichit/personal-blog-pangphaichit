@@ -5,7 +5,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  ttheme: {
+  theme: {
     extend: {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
