@@ -22,6 +22,7 @@ import SofiaImage from "../assets/author-image.jpg";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { toast } from 'sonner';
+import { useNavigate } from "react-router-dom";
 
 export function ViewPost() {
   const [img, setImg] = useState("");
@@ -256,7 +257,7 @@ function AuthorBio() {
         </div>
         <div>
           <p className="text-sm">Author</p>
-          <h3 className="text-2xl font-bold">Sofia Blake.</h3>
+          <h3 className="text-2xl font-bold">Sofia Blake</h3>
         </div>
       </div>
       <hr className="border-gray-300 mb-4" />
@@ -286,6 +287,7 @@ function LoadingScreen() {
 }
 
 export function CreateAccountModal({ dialogState, setDialogState }) {
+  const navigate = useNavigate();
   return (
     <AlertDialog open={dialogState} onOpenChange={setDialogState}>
       <AlertDialogContent className="bg-white rounded-md pt-14 pb-12 max-w-[20rem] sm:max-w-lg flex flex-col items-center">
@@ -297,8 +299,7 @@ export function CreateAccountModal({ dialogState, setDialogState }) {
         </button>
         <AlertDialogDescription className="flex flex-row gap-1 justify-center font-medium text-center pt-2   text-muted-foreground">
           Already have an account?&nbsp;
-          <a
-            href="/login"
+          <a href="#" onClick={() => navigate("/log-in")} 
             className="text-foreground hover:text-muted-foreground transition-colors underline font-semibold"
           >
             Log in
