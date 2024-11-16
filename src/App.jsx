@@ -7,6 +7,9 @@ import { SignUpPage } from "./pages/SignUpPage";
 import { SignUpSuccessPage } from "./pages/SignUpSuccessPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ResetPasswordPage } from "./pages/ResetPasswordPage";
+import { AdminLoginPage } from "./pages/admin/AdminLoginPage";
+import { AdminResetPasswordPage } from "./pages/admin/AdminResetPasswordPage";
+import { AdminProfilePage } from "./pages/admin/AdminProfilePage";
 import { Toaster } from "sonner";
 
 function App() {
@@ -22,6 +25,10 @@ return (
           <Route path="/log-in" element={<LoginPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+           {/* Admin Section */}
+           <Route path="/admin/login" element={<AdminLoginPage />} />
+           <Route path="/admin/reset-password"element={<AdminResetPasswordPage />} />
+           <Route path="/admin/profile" element={<AdminProfilePage />} />
         </Routes>
       </Router>
       <Toaster
