@@ -63,8 +63,8 @@ export function ViewPost() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 container md:px-8 pb-20 md:pb-28 md:pt-8 lg:pt-16">
-      <div className="space-y-4 md:px-4">
+    <div className="w-full lg:px-20 mx-auto space-y-8 container pb-20 md:px-15 md:pb-28">
+      <div className="space-y-4">
         <img
           src={img}
           alt={title}
@@ -73,7 +73,7 @@ export function ViewPost() {
       </div>
       <div className="flex flex-col xl:flex-row gap-6">
         <div className="xl:w-3/4 space-y-8">
-          <article className="px-4">
+          <article className="px-4 lg:px-1 lg:pt-6">
             <div className="flex">
               <span className="bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-600 mb-2">
                 {category}
@@ -86,7 +86,7 @@ export function ViewPost() {
                 })}
               </span>
             </div>
-            <h1 className="text-3xl font-bold">{title}</h1>
+            <h1 className="text-3xl font-bold mt-4">{title}</h1>
             <p className="mt-4 mb-10">{description}</p>
             <div className="markdown">
               <ReactMarkdown>{content}</ReactMarkdown>
@@ -151,8 +151,8 @@ export function Share({ likesAmount, setDialogState }) {
   };
 
   return (
-    <div className="md:px-4">
-      <div className="bg-[#EFEEEB] py-4 px-4 md:rounded-sm flex flex-col space-y-4 md:gap-16 md:flex-row md:items-center md:space-y-0 md:justify-between mb-10">
+    <div className="space-y-4 lg:px-0 mb-16">
+      <div className="bg-[#EFEEEB] py-4 px-4 md:rounded-xl flex flex-col space-y-4 md:gap-16 md:flex-row md:items-center md:space-y-0 md:justify-between mb-10">
       <button
           onClick={() => setDialogState(true)}
           className="bg-white flex items-center justify-center space-x-2 px-11 py-3 rounded-full text-foreground border border-foreground hover:border-muted-foreground hover:text-muted-foreground transition-colors group"
@@ -200,8 +200,8 @@ export function Share({ likesAmount, setDialogState }) {
 }
 function Comment({ setDialogState }) {
   return (
-    <div>
-      <div className="space-y-4 px-4 mb-16">
+    <div className="W-full space-y-4 px-1 lg:px-0 mb-16">
+      <div className="space-y-4 px-4 lg:px-0 mb-16">
         <h3 className="text-lg font-semibold">Comment</h3>
         <div className="space-y-2">
           <Textarea
@@ -210,13 +210,13 @@ function Comment({ setDialogState }) {
             className="w-full p-4 h-24 resize-none py-3 rounded-sm placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-muted-foreground"
           />
           <div className="flex justify-end">
-            <button className="px-8 py-2 bg-foreground text-white rounded-full hover:bg-muted-foreground transition-colors">
+            <button className="px-8 py-2 mt-4 bg-foreground text-white rounded-full hover:bg-muted-foreground transition-colors">
               Send
             </button>
           </div>
         </div>
       </div>
-      <div className="space-y-6 px-4">
+      <div className="space-y-6 px-4 lg:px-0">
         {comments.map((comment, index) => (
           <div key={index} className="flex flex-col gap-2 mb-4">
             <div className="flex space-x-4">
@@ -246,7 +246,7 @@ function Comment({ setDialogState }) {
 }
 function AuthorBio() {
   return (
-    <div className="bg-[#EFEEEB] rounded-3xl p-6">
+    <div className="bg-[#EFEEEB] rounded-xl p-6 lg:mr-1 lg:mt-7">
       <div className="flex items-center mb-4">
         <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
           <img
@@ -294,7 +294,7 @@ export function CreateAccountModal({ dialogState, setDialogState }) {
         <AlertDialogTitle className="text-2xl font-semibold pb-2 text-center">
           Create an account to continue
         </AlertDialogTitle>
-        <button className="rounded-full text-white bg-foreground hover:bg-muted-foreground transition-colors py-4 text-lg w-52">
+        <button onClick={() => navigate("/sign-up")} className="rounded-full text-white bg-foreground hover:bg-muted-foreground transition-colors py-4 text-lg w-52">
           Create account
         </button>
         <AlertDialogDescription className="flex flex-row gap-1 justify-center font-medium text-center pt-2   text-muted-foreground">

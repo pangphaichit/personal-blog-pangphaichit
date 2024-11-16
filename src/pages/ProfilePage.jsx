@@ -124,7 +124,7 @@ export function ProfilePage() {
                 </label>
               </div>
 
-              <form className="space-y-4">
+              <form className="space-y-7">
                 <ProfileFormField
                   id="name"
                   label="Name"

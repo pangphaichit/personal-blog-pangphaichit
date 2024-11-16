@@ -120,7 +120,7 @@ export function Article() {
   }, [searchKeyword]);
 
   return (
-    <div className="w-full mx-auto md:px-6 lg:px-20 mb-20 px-4 ">
+    <div className="w-full mx-auto md:px-6 lg:px-20 mb-20">
       <h2 className="text-xl font-bold mb-4 px-4">Latest articles</h2>
       <div className="bg-[#EFEEEB] px-4 py-4 md:py-3 md:rounded-sm flex flex-col space-y-4 md:flex-row-reverse md:items-center md:space-y-0 md:justify-between">
         
@@ -196,7 +196,7 @@ export function Article() {
         </div>
       </div>
 
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-0 gap-y-2">
+      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-0 gap-y-2 px-4">
       {loading && page === 1 ? (
         <div className="col-span-full flex flex-col justify-center items-center h-40 w-full">
            <Loader2 className="w-12 h-12 animate-spin text-foreground" />
