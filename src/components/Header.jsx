@@ -20,8 +20,8 @@ export function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Replace with actual login state
 
   return (
-    <nav className="flex items-center justify-between py-4 px-4 md:px-8 bg-background border-b border-muted">
-       <a href="#" onClick={() => navigate("/")} className="logo lg:pl-20">
+    <nav className="bg-background flex items-center justify-between py-3 px-4 md:px-8 lg:px-20 border-b border-muted md:mb-8 lg:mb-12">
+       <a href="#" onClick={() => navigate("/")} className="logo">
         <img src={SofiaLogo} alt="Logo" className="h-12" />
         </a>
       {!isLoggedIn ? (

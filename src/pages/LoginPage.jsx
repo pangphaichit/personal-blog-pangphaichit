@@ -38,7 +38,6 @@ export function LoginPage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex justify-center items-center p-4 my-4 flex-grow">
         <div className="w-full max-w-2xl bg-[#EFEEEB] rounded-sm shadow-md px-3 sm:px-20 py-14">
-          <p className="text-xl font-semibold text-orange-300 text-center mb-4 ">Admin panel</p>
           <h2 className="text-4xl font-semibold text-center mb-6 text-foreground">Log in</h2>
           <form className="space-y-8" onSubmit={handleSubmit}>
             <div className="relative space-y-1">

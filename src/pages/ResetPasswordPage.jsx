@@ -37,7 +37,7 @@ function InputField({ id, label, value, onChange, error, type = "password", plac
 function ResetPasswordModal({ isOpen, closeDialog, handleReset }) {
   return (
     <AlertDialog open={isOpen} onOpenChange={closeDialog}>
-      <AlertDialogContent className="bg-white rounded-md pt-16 pb-6 max-w-[22rem] sm:max-w-md flex flex-col items-center">
+      <AlertDialogContent className="bg-white rounded-md pt-16 pb-8 max-w-[22rem] sm:max-w-md flex flex-col items-center">
         <AlertDialogTitle className="text-3xl font-semibold pb-2 text-center">
           Reset password
         </AlertDialogTitle>
@@ -47,13 +47,13 @@ function ResetPasswordModal({ isOpen, closeDialog, handleReset }) {
         <div className="flex flex-row gap-4">
           <button
             onClick={() => closeDialog(false)}
-            className="bg-background px-10 py-4 rounded-full text-foreground border border-foreground hover:border-muted-foreground hover:text-muted-foreground transition-colors"
+            className="bg-background px-9 py-2 rounded-full text-foreground border border-foreground hover:border-muted-foreground hover:text-muted-foreground transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleReset}
-            className="rounded-full text-white bg-foreground hover:bg-muted-foreground transition-colors py-4 text-lg px-10"
+            className="rounded-full text-white bg-foreground hover:bg-muted-foreground transition-colors py-2 text-lg px-11"
           >
             Reset
           </button>
