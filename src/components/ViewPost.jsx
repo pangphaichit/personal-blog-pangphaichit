@@ -73,9 +73,9 @@ export function ViewPost() {
       </div>
       <div className="flex flex-col xl:flex-row gap-6">
         <div className="xl:w-3/4 space-y-8">
-          <article className="px-4 lg:px-1 lg:pt-6">
+          <article className="px-4 lg:px-1 lg:pt-4">
             <div className="flex">
-              <span className="bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-600 mb-2">
+              <span className="bg-sky-50 text-stone-600 rounded-full px-3 py-1 text-sm font-semibold mb-2">
                 {category}
               </span>
               <span className="px-3 py-1 text-sm font-normal text-muted-foreground">

@@ -27,12 +27,12 @@ export function BlogCard({ id, image, category, title, description, author, date
         </a>
         <div className="flex flex-col">
           <div className="flex">
-            <span className="bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-green-600 mb-2">
+            <span className="bg-sky-50 text-stone-600 rounded-full px-3 py-1 text-sm font-semibold mb-2">
               {category}
             </span>
           </div>
           <a href="#" onClick={() => navigate(`/post/${id}`)}>
-            <h2 className="font-bold text-xl mb-2 line-clamp-2 hover:underline">
+            <h2 className="font-bold text-xl mb-2 line-clamp-2 hover:underline hover:text-cyan-600">
               {title}
             </h2>
           </a>
